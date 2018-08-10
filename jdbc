@@ -1,0 +1,32 @@
+package meenakshi;
+import java.sql.*;
+
+public class hello {
+	void show()
+	{
+	
+		try{  
+			Class.forName("com.mysql.jdbc.Driver");  
+			Connection con=DriverManager.getConnection(  
+			"jdbc:mysql://localhost:3065/jdbcmeena","root","");  
+			//here sonoo is database name, root is username and password  
+			Statement stmt=con.createStatement();  
+			ResultSet rs=stmt.executeQuery("select * from sign");  
+			while(rs.next())  
+			{
+				String username=rs.getString(1);
+				String password=rs.getString(2);
+			System.out.println(username+"  "+password); 
+			}
+			con.close();  
+			}catch(Exception e){ System.out.println(e);
+			
+			}  
+		}
+	
+	public static void main(String args[]){  
+	hello s=new hello();
+	s.show();
+}
+}
+
