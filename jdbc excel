@@ -1,0 +1,56 @@
+importjava.io.File;
+importjava.io.IOException;
+
+importjxl.Cell;
+importjxl.CellType;
+importjxl.Sheet;
+importjxl.Workbook;
+importjxl.read.biff.BiffException;
+
+
+publicclass connect {
+	private String inputFile;
+	
+	publicvoidsetInputFile(String inputFile) {
+	this.inputFile = inputFile;
+	 }
+	
+	publicvoid read() throwsIOException{
+	  File inputWorkbook = newFile(inputFile);
+	  Workbook w;
+	try {
+	w = Workbook.getWorkbook(inputWorkbook);
+	// Get the first sheet
+	  Sheet sheet = w.getSheet(0);
+	//loop over first 10 column and lines
+	
+	for(intj= 0;j<sheet.getColumns();j++){
+	for (inti=0;i<sheet.getRows(); i++) {
+	    Cell cell = sheet.getCell(j,i);
+	CellTypetype = cell.getType();
+	
+	if(type == CellType.LABEL) {
+	System.out.println("I got a label " + cell.getContents());
+	    }
+	
+	if(type == CellType.NUMBER) {
+	System.out.println("I got a number " + cell.getContents());
+	    }
+	   }
+	  }
+	
+	  } catch(BiffExceptione) {
+	e.printStackTrace();
+	 }
+	
+
+
+	 }
+	
+	publicstaticvoid main(String[] args) throwsIOException {
+	connecttest= new connect();
+	test.setInputFile("F:\\Book1.xls");
+	test.read();
+	 }
+
+}
