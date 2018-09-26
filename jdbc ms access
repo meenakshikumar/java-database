@@ -1,0 +1,38 @@
+	
+importjava.sql.*;
+
+publicclassaccessconnect {
+
+	publicstaticvoid main(String[] args) 
+	{
+
+	try
+	    {
+
+	        Connectionconn=DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\admin\\eclipse-workspace\\enumsam\\Socket\\src\\Theatre1.mdb");
+	
+   Statement stment = conn.createStatement();
+
+	        String qry = "SELECT * FROM Hurricane";
+
+	ResultSetrs = stment.executeQuery(qry);
+
+	while(rs.next())
+	        {
+	            String id    = rs.getString("Seat") ;
+	            String fname = rs.getString("Availablity");
+
+System.out.println("Seat no="+id +"\t" +"Availablity=" +fname +"\n");
+	        }
+	    }
+	
+catch(Exception err)
+	    {
+	System.out.println(err);
+	    }
+
+
+	//System.out.println("HasithSithila");
+
+	}}  
+
